@@ -1,10 +1,6 @@
 # Deploying Fullstack Web App to AWS & integrating Dynatrace 💻
 
-We will not be doing a local deployment of this App (on your machine).
-Instead we'll go straight to Cloud (aws) deployment.
-If you'd like to spin it up locally first, please make sure that you have a local instance of Postgresql server running. You can use DBeaver/PgAdmin to interact with the underlying database.
-
-## AWS Deployment guide 🛠️
+## AWS Deployment guide
 
 Key components that our Web App deployment will rely on:
 - **AWS EC2** – hosting the backend
@@ -13,20 +9,7 @@ Key components that our Web App deployment will rely on:
 - **AWS Amplify** – deploying (CICD) & hosting the frontend
 - **AWS S3** – graphical assets storage storage (product images)
 
-
-Architecture
-![](server/assets/documentation/AWS_WebApp_Architecture.jpg)
-
-
-### 1. Pre-requisites ✅
-
-1. Download & unzip the materials to this practice case. Open in IDE
-2. Study **README-1_App-overview**
-3. Set up an AWS account (with Billing enabled)
-4. Install git client locally
-
-
-### 2. AWS Cloud Networking 🛜
+### 1. AWS Cloud Networking 🛜
 1. AWS Services -> VPC -> Create VPC
 ![](server/assets/documentation/vpc.png)
 
@@ -37,7 +20,7 @@ Architecture
 4. Set up Public & Private Route tables
 
 
-### 3. AWS EC2 (backend hosting) ⚙️
+### 2. AWS EC2 (backend hosting) ⚙️
 1. Create EC2 instance -> Connect using AWS UI
 2. Set up a git repo locally, set a remote origin master connection &
 
@@ -94,7 +77,7 @@ pm2 delete all
 pm2 start ecosystem.config.js
 ```
 
-### 4. AWS RDS (psql hosting) 📀
+### 3. AWS RDS (psql hosting) 📀
 1. Services -> RDS -> Subnet groups -> Create DB Subnet group -> Associate with 2 private subnets we created earlier
    
 2. RDS -> Create database -> PostgreSQL
@@ -126,7 +109,7 @@ For example,
 *9.99.99.99/dashboard*
 
 
-### 5. AWS Amplify (frontend CICD & hosting) 📊
+### 4. AWS Amplify (frontend CICD & hosting) 📊
 1. Services -> API Gateway -> HTTP API -> Build -> Add Integrations & Add "prod" stage
 HTTP + GET + http://yourEC2IPv4/dashboard
 HTTP + GET + http://yourEC2IPv4/users
@@ -138,7 +121,7 @@ NEXT_PUBLIC_API_BASE_URL
 http://yourInvokeURL from API Gateway
 4. Check the Web App in browser
 
-### 6. AWS S3 (graphical assets storing) 📦
+### 5. AWS S3 (graphical assets storing) 📦
 1. Services -> S3 -> Create bucket -> Allow "All public access" -> Create
 2. Upload server/assets/* to S3
 3. Bucket -> Permissions -> Add bucket policy:
@@ -175,7 +158,7 @@ http://yourInvokeURL from API Gateway
 
 8. Check logs with `pm2 logs inventory-management` while navigating across Web App's pages
 
-### 7. AWS Infrastructure Monitoring  📊
+### 6. AWS Infrastructure Monitoring  📊
 1. AWS -> CloudWatch -> Dashboards -> Automatic Dashboards ->
    * EC2
    * RDS
