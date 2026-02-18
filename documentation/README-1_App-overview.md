@@ -1,7 +1,3 @@
-# Deploying Fullstack Web App to AWS & integrating Dynatrace 💻
-We will not be doing a local deployment of this App (on your machine).
-Instead we'll go straight to Cloud (aws) deployment.
-If you'd like to spin it up locally first, please make sure that you have a local instance of Postgresql server running. You can use DBeaver/PgAdmin to interact with the underlying database.
 ## 1. Web App overview 🔍
 
 - A fullstack **Inventory Management Dashboard** 
